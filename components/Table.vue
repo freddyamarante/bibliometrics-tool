@@ -2,7 +2,7 @@
   <div>
     <table>
       <tr>
-        <th>#</th>
+        <th>ID</th>
         <th>Universidad</th>
         <th>Título de tesis</th>
         <th>Año</th>
