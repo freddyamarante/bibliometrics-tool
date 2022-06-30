@@ -642,7 +642,6 @@
             <div>
               <button
                 class="
-                  disabled
                   bg-gray-500
                   hover:bg-blue-700
                   text-white
@@ -663,14 +662,28 @@
       </div>
     </div>
     <div class="mt-6">
-      <Table :theses="theses" />
+      <Table :theses="theses" @delete="removeBibliometric()" />
+        <button
+          class="
+            bg-gray-500
+            hover:bg-blue-700
+            text-white
+            font-bold
+            py-2
+            px-4
+            border border-blue-700
+            rounded
+            mt-6
+          "
+          @click="convertToCsv()"
+        >
+          Convertir a .csv
+        </button>
     </div>
   </div>
 </template>
 
 <script>
-const ObjectsToCsv = require('objects-to-csv');
-
 export default {
   name: 'Form',
   data() {
@@ -714,7 +727,7 @@ export default {
     },
   },
   mounted() {
-      this.getLocalStorage()
+    this.getLocalStorage()
   },
   methods: {
     createRandomId() {
@@ -722,13 +735,13 @@ export default {
       if (this.checkIdExists()) {
         newId = Math.floor(Math.random() * 1000)
       } else {
-        return newId;
+        return newId
       }
     },
 
     checkIdExists(checkId) {
-      this.theses.some(item => {
-        return this.theses.id === checkId;
+      this.theses.some((item) => {
+        return this.theses.id === checkId
       })
     },
 
@@ -770,20 +783,27 @@ export default {
 
     saveLocalStorage() {
       if (process.client) {
-        localStorage.setItem("entrada", JSON.stringify(this.theses))
+        localStorage.setItem('entrada', JSON.stringify(this.theses))
       }
     },
 
     getLocalStorage() {
-      this.theses = JSON.parse(localStorage.getItem("entrada"))
+      this.theses = JSON.parse(localStorage.getItem('entrada'))
+    },
+    
+    removeBibliometric(item) {
+      this.theses.splice(item, 1)
+
+      this.saveLocalStorage()
     },
 
-    async convertToCsv() {
-      const csv = new ObjectsToCsv(this.theses)
-      await csv.toDisk('~/csv/theses.csv')
 
-      console.log(await csv.toString);
-    }
+    // async convertToCsv() {
+    //   const csv = new ObjectsToCsv(this.theses)
+    //   await csv.toDisk('~/csv/theses.csv')
+
+    //   console.log(await csv.toString)
+    // },
   },
 }
 </script>

@@ -36,9 +36,9 @@
         <td>{{ thesis.no_obtenibles }}</td>
         <td>{{ thesis.referencias_recientes }}</td>
         <td>{{ thesis.indice_price }}</td>
-        <!-- <td>
-          <button @click="removeBibliometric(thesis.id)">Eliminar</button>
-        </td> -->
+        <td>
+          <button @click="$emit('delete', thesis.id)">Eliminar</button>
+        </td>
       </tr>
     </table>
   </div>
@@ -54,9 +54,6 @@ export default {
     },
   },
   methods: {
-    removeBibliometric(item) {
-      this.props.theses.splice(item, 1)
-    },
   },
 }
 </script>
