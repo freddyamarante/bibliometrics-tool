@@ -711,6 +711,11 @@ export default {
       return sum !== parseInt(this.form.numcitas)
     },
   },
+  mounted() {
+    if (this.theses.length >= 1) {
+      this.getLocalStorage()
+    }
+  },
   methods: {
     createRandomId() {
       let newId = Math.floor(Math.random() * 1000)
@@ -738,8 +743,8 @@ export default {
         id: this.createRandomId(),
         indice_price: this.registerPriceIndex(),
       })
-      
-      this.saveDataInLocalStorage()
+
+      this.saveLocalStorage()
     },
 
     clearInputFields() {
@@ -763,10 +768,14 @@ export default {
       }
     },
 
-    saveDataInLocalStorage() {
+    saveLocalStorage() {
       if (process.client) {
-        localStorage.setItem("entrada", this.theses)
+        localStorage.setItem("entrada", JSON.stringify(this.theses))
       }
+    },
+
+    getLocalStorage() {
+      this.theses = JSON.parse(localStorage.getItem("entrada"))
     }
   },
 }
