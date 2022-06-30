@@ -669,6 +669,8 @@
 </template>
 
 <script>
+const ObjectsToCsv = require('objects-to-csv');
+
 export default {
   name: 'Form',
   data() {
@@ -774,6 +776,13 @@ export default {
 
     getLocalStorage() {
       this.theses = JSON.parse(localStorage.getItem("entrada"))
+    },
+
+    async convertToCsv() {
+      const csv = new ObjectsToCsv(this.theses)
+      await csv.toDisk('~/csv/theses.csv')
+
+      console.log(await csv.toString);
     }
   },
 }
