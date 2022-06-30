@@ -53,7 +53,7 @@
         <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700" >
           <td scope="row" class="px-6 py-4 font-large text-gray-900 dark:text-white whitespace-nowrap">Total de tesis:</td>
           <td scope="row" class="px-6 py-4 font-large text-gray-900 dark:text-white whitespace-nowrap">
-            {{ theses.length }}
+            {{ calculateLength() }}
           </td>
         </tr>
       </tbody>
@@ -70,7 +70,15 @@ export default {
       required: true,
     },
   },
-  methods: {},
+  methods: {
+    calculateLength() {
+      try {
+        return this.theses.length
+      } catch (err) {
+        console.log()
+      }
+    }
+  },
 }
 </script>
 
