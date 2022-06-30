@@ -663,22 +663,26 @@
     </div>
     <div class="mt-6">
       <Table :theses="theses" @delete="removeBibliometric()" />
-        <button
-          class="
-            bg-gray-500
-            hover:bg-blue-700
-            text-white
-            font-bold
-            py-2
-            px-4
-            border border-blue-700
-            rounded
-            mt-6
-          "
-          @click="exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')"
-        >
-          Convertir a .csv
-        </button>
+      <button
+        class="
+          my-6
+          bg-gray-300
+          hover:bg-gray-400
+          text-gray-800
+          font-bold
+          py-2
+          px-4
+          rounded
+          inline-flex
+          items-center
+        "
+        @click="
+          exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')
+        "
+      >
+        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+        <span>Exportar a .csv</span>
+      </button>
     </div>
   </div>
 </template>
@@ -790,34 +794,32 @@ export default {
     getLocalStorage() {
       this.theses = JSON.parse(localStorage.getItem('entrada'))
     },
-    
+
     removeBibliometric(item) {
       this.theses.splice(item, 1)
 
       this.saveLocalStorage()
     },
 
-
     convertToCsv(objectData) {
       try {
-        const csvRows = [];
-        const headers = Object.keys(objectData[0]);
+        const csvRows = []
+        const headers = Object.keys(objectData[0])
 
         csvRows.push(headers.join(','))
 
         for (const row of objectData) {
-          const values = headers.map(header => {
+          const values = headers.map((header) => {
             const val = row[header]
             return `"${val}"`
-          });
+          })
 
           csvRows.push(values.join(','))
         }
-        
+
         const csv = csvRows.join('\n')
 
-        return csv;
-
+        return csv
       } catch (err) {
         console.log(err)
       }
@@ -825,26 +827,23 @@ export default {
 
     exportToCsvFile(csvData, filename) {
       try {
-        let csvFile = '' 
+        let csvFile = ''
         let downloadLink = ''
 
-        csvFile = new Blob([csvData], {type: "text/csv"});
+        csvFile = new Blob([csvData], { type: 'text/csv' })
 
-        downloadLink = document.createElement("a")
+        downloadLink = document.createElement('a')
         downloadLink.download = filename
         downloadLink.href = window.URL.createObjectURL(csvFile)
-        downloadLink.style.display = "none";
+        downloadLink.style.display = 'none'
 
         document.body.appendChild(downloadLink)
 
         downloadLink.click()
-
       } catch (err) {
         console.log(err)
       }
-    }
-
-
-  }
+    },
+  },
 }
 </script>
