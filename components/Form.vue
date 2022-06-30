@@ -675,7 +675,7 @@
             rounded
             mt-6
           "
-          @click="convertToCsv()"
+          @click="convertToCsv(theses)"
         >
           Convertir a .csv
         </button>
@@ -798,12 +798,32 @@ export default {
     },
 
 
-    // async convertToCsv() {
-    //   const csv = new ObjectsToCsv(this.theses)
-    //   await csv.toDisk('~/csv/theses.csv')
+    convertToCsv(data) {
+      try {
+        const csvRows = [];
+        const headers = Object.keys(data[0]);
 
-    //   console.log(await csv.toString)
-    // },
-  },
+        csvRows.push(headers.join(','))
+
+        for (const row of data) {
+          const values = headers.map(header => {
+            const val = row[header]
+            return `"${val}"`
+          });
+
+          csvRows.push(values.join(','))
+        }
+        
+        const csv = csvRows.join('\n')
+
+        console.log(csv)
+        return csv;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+
+  }
 }
 </script>
