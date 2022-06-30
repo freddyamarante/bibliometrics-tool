@@ -733,14 +733,13 @@ export default {
     },
 
     addBibliometric() {
-      const newBibliometric = {
+      this.theses.push({
         ...this.form,
         id: this.createRandomId(),
         indice_price: this.registerPriceIndex(),
-      }
-
-      this.theses.push(newBibliometric)
-      this.saveDataInLocalStorage(newBibliometric)
+      })
+      
+      this.saveDataInLocalStorage()
     },
 
     clearInputFields() {
@@ -764,9 +763,9 @@ export default {
       }
     },
 
-    saveDataInLocalStorage(tableData) {
+    saveDataInLocalStorage() {
       if (process.client) {
-        localStorage.setItem("entrada", tableData)
+        localStorage.setItem("entrada", this.theses)
       }
     }
   },
