@@ -675,7 +675,7 @@
             rounded
             mt-6
           "
-          @click="convertToCsv(theses)"
+          @click="exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')"
         >
           Convertir a .csv
         </button>
@@ -798,14 +798,14 @@ export default {
     },
 
 
-    convertToCsv(data) {
+    convertToCsv(objectData) {
       try {
         const csvRows = [];
-        const headers = Object.keys(data[0]);
+        const headers = Object.keys(objectData[0]);
 
         csvRows.push(headers.join(','))
 
-        for (const row of data) {
+        for (const row of objectData) {
           const values = headers.map(header => {
             const val = row[header]
             return `"${val}"`
@@ -816,12 +816,33 @@ export default {
         
         const csv = csvRows.join('\n')
 
-        console.log(csv)
         return csv;
+
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     },
+
+    exportToCsvFile(csvData, filename) {
+      try {
+        let csvFile = '' 
+        let downloadLink = ''
+
+        csvFile = new Blob([csvData], {type: "text/csv"});
+
+        downloadLink = document.createElement("a")
+        downloadLink.download = filename
+        downloadLink.href = window.URL.createObjectURL(csvFile)
+        downloadLink.style.display = "none";
+
+        document.body.appendChild(downloadLink)
+
+        downloadLink.click()
+
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
 
   }

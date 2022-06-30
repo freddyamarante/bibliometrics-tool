@@ -40,6 +40,14 @@
           <button @click="$emit('delete', thesis.id)">Eliminar</button>
         </td>
       </tr>
+      <tr>
+        <td>
+          Total de tesis: 
+        </td>
+        <td>
+          {{theses.length}}
+        </td>
+      </tr>
     </table>
   </div>
 </template>
