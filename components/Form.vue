@@ -712,9 +712,7 @@ export default {
     },
   },
   mounted() {
-    if (this.theses.length >= 1) {
       this.getLocalStorage()
-    }
   },
   methods: {
     createRandomId() {
