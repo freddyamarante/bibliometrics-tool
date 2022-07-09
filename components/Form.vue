@@ -749,6 +749,7 @@ export default {
     },
 
     addBibliometric() {
+      this.theses = this.theses || []
       this.theses.push({
         ...this.form,
         id: this.createRandomId(),
