@@ -1,6 +1,6 @@
 <template>
-  <div class="container py-4 px-4">
-    <div>
+  <div class="dark">
+    <div class="container py-4 px-4">
       <Form />
     </div>
   </div>
