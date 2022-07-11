@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-2 gap-2">
-    <div class="mt-6">
+  <div class="grid grid-cols-2 justify-center">
+    <div>
       <div
         class="
           py-8
@@ -655,28 +655,40 @@
         </form>
       </div>
     </div>
-    <div class="mt-6">
-      <Table :theses="theses" @delete="removeBibliometric()" />
-      <button
-        class="
-          my-6
-          bg-gray-300
-          hover:bg-gray-400
-          text-gray-800
-          font-bold
-          py-2
-          px-4
-          rounded
-          inline-flex
-          items-center
-        "
-        @click="
-          exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')
-        "
-      >
-        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-        <span>Exportar a .csv</span>
-      </button>
+    <div>
+      <div class="h-2/5 w-full">
+        <Table
+          :theses="theses"
+          class="max-h-screen w-fit"
+          @delete="removeBibliometric()"
+        />
+        <button
+          class="
+            my-6
+            bg-gray-300
+            hover:bg-gray-400
+            text-gray-800
+            font-bold
+            py-2
+            px-4
+            rounded
+            inline-flex
+            items-center
+          "
+          @click="
+            exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')
+          "
+        >
+          <svg
+            class="fill-current w-4 h-4 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+          </svg>
+          <span>Exportar a .csv</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
