@@ -1,12 +1,20 @@
 <template>
   <div class="overflow-auto">
-    <table class="table-auto overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
+    <table
+      class="
+        table-auto
+        overflow-scroll
+        text-sm text-left text-gray-500
+        dark:text-gray-400
+      "
+    >
       <thead
         class="
           text-xs text-gray-700
           bg-gray-50
           dark:bg-gray-700 dark:text-gray-400
-          top-0 sticky
+          top-0
+          sticky
         "
       >
         <tr>
@@ -30,8 +38,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="thesis in theses" :key="thesis.id" class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ thesis.id }}</th>
+        <tr
+          v-for="thesis in theses"
+          :key="thesis.id"
+          class="
+            border-b
+            dark:bg-gray-800 dark:border-gray-700
+            odd:bg-white
+            even:bg-gray-50
+            odd:dark:bg-gray-800
+            even:dark:bg-gray-700
+          "
+        >
+          <th
+            scope="row"
+            class="
+              px-6
+              py-4
+              font-medium
+              text-gray-900
+              dark:text-white
+              whitespace-nowrap
+            "
+          >
+            {{ thesis.id }}
+          </th>
           <td class="px-6 py-4">{{ thesis.universidad }}</td>
           <td class="px-6 py-4">{{ thesis.tesis }}</td>
           <td class="px-6 py-4">{{ thesis.año }}</td>
@@ -48,12 +79,58 @@
           <td class="px-6 py-4">{{ thesis.referencias_recientes }}</td>
           <td class="px-6 py-4">{{ thesis.indice_price }}</td>
           <td class="px-6 py-4">
-            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" @click="$emit('delete', thesis.id)">Eliminar</button>
+            <button
+              class="
+                bg-transparent
+                hover:bg-blue-500
+                text-blue-700
+                font-semibold
+                hover:text-white
+                py-2
+                px-4
+                border border-blue-500
+                hover:border-transparent
+                rounded
+              "
+              @click="$emit('delete', thesis.id)"
+            >
+              Eliminar
+            </button>
           </td>
         </tr>
-        <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700" >
-          <td scope="row" class="px-6 py-4 font-large text-gray-900 dark:text-white whitespace-nowrap">Total de tesis:</td>
-          <td scope="row" class="px-6 py-4 font-large text-gray-900 dark:text-white whitespace-nowrap">
+        <tr
+          class="
+            text-xs text-gray-700
+            bg-gray-50
+            dark:bg-gray-700 dark:text-gray-400
+            sticky
+          "
+        >
+          <td
+            scope="row"
+            class="
+              px-6
+              py-4
+              font-large
+              text-gray-900
+              dark:text-white
+              whitespace-nowrap
+            "
+          >
+            Total de tesis:
+          </td>
+          <td
+            scope="row"
+            colspan="100%"
+            class="
+              px-6
+              py-4
+              font-large
+              text-gray-900
+              dark:text-white
+              whitespace-nowrap
+            "
+          >
             {{ calculateLength() }}
           </td>
         </tr>
@@ -78,7 +155,7 @@ export default {
       } catch (err) {
         console.log()
       }
-    }
+    },
   },
 }
 </script>
