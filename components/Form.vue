@@ -771,30 +771,31 @@
       </div>
     </div>
 
-    <div class="my-6 mx-16 col-span-2">
-      <div
-        class="
-          grid grid-cols-2
-          m-4
-          p-6
-          bg-white
-          rounded-lg
-          border border-gray-200
-          shadow-md
-          dark:bg-gray-800 dark:border-gray-700
-        "
-      >
+    <div
+      class="
+        my-6
+        mx-16
+        col-span-2
+        p-6
+        bg-white
+        rounded-lg
+        border border-gray-200
+        shadow-md
+        dark:bg-gray-800 dark:border-gray-700
+      "
+    >
+      <div class="grid grid-cols-2 justify-items-center">
         <div class="bg-white m-4 h-4 w-4"></div>
         <div class="bg-white m-4 h-4 w-4"></div>
         <div class="bg-white m-4 h-4 w-4"></div>
         <div class="bg-white m-4 h-4 w-4"></div>
-        <div class="bg-white m-4 h-4 w-4"></div>
-        <!-- <Chart
+        <div class="bg-white col-span-2 m-4 h-4 w-4"></div>
+      </div>
+      <!-- <Chart
               :theses="theses"
               class="max-h-[720px]"
               @delete="removeBibliometric($event)"
             /> -->
-      </div>
     </div>
   </div>
 </template>
