@@ -2,6 +2,7 @@
   <div class="overflow-auto">
     <table
       class="
+        p-2
         table-auto
         overflow-scroll
         text-sm text-left text-gray-500
@@ -39,7 +40,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="thesis in theses"
+          v-for="(thesis) in theses"
           :key="thesis.id"
           class="
             border-b

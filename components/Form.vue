@@ -19,7 +19,7 @@
         class="w-full max-w-sm text-center"
         @submit.prevent
       >
-        <h1 class="py-8 text-center text-blue-700 font-bold">
+        <h1 class="py-8 text-center text-gray-200 font-bold">
           Análisis bibliométrico de las tesis de pregrado de universidades del
           Perú, período 2010-2021
         </h1>
@@ -726,38 +726,40 @@
       </form>
     </div>
 
-    <div class="max-h-2/5 w-full w-[130%]">
-      <Table
-        :theses="theses"
-        class="max-h-[720px]"
-        @delete="removeBibliometric()"
-      />
-      <button
-        class="
-          my-6
-          bg-gray-300
-          hover:bg-gray-400
-          text-gray-800
-          font-bold
-          py-2
-          px-4
-          rounded
-          inline-flex
-          items-center
-        "
-        @click="
-          exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')
-        "
-      >
-        <svg
-          class="fill-current w-4 h-4 mr-2"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
+    <div>
+      <div class="max-h-2/5 w-full w-[130%]">
+        <Table
+          :theses="theses"
+          class="max-h-[720px]"
+          @delete="removeBibliometric($event)"
+        />
+        <button
+          class="
+            my-6
+            bg-gray-300
+            hover:bg-gray-400
+            text-gray-800
+            font-bold
+            py-2
+            px-4
+            rounded
+            inline-flex
+            items-center
+          "
+          @click="
+            exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')
+          "
         >
-          <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-        </svg>
-        <span>Exportar a .csv</span>
-      </button>
+          <svg
+            class="fill-current w-4 h-4 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+          </svg>
+          <span>Exportar a .csv</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -872,7 +874,7 @@ export default {
     },
 
     removeBibliometric(item) {
-      this.theses.splice(item, 1)
+      this.theses = this.theses.filter((thesis) => thesis.id !== item)
 
       this.saveLocalStorage()
     },
