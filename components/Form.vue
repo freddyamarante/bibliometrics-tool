@@ -784,11 +784,11 @@
           dark:bg-gray-800 dark:border-gray-700
         "
       >
-        <div class="bg-white h-4 w-4"></div>
-        <div class="bg-white h-4 w-4"></div>
-        <div class="bg-white h-4 w-4"></div>
-        <div class="bg-white h-4 w-4"></div>
-        <div class="bg-white h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
         <!-- <Chart
               :theses="theses"
               class="max-h-[720px]"
