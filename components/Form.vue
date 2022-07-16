@@ -19,7 +19,7 @@
         class="w-full max-w-sm text-center"
         @submit.prevent
       >
-        <h1 class="pb-4 text-center text-xl text-gray-200 font-bold">
+        <h1 class="py-8 text-center text-gray-200 font-bold">
           Análisis bibliométrico de las tesis de pregrado en la carrera de
           Ingenieria de Sistemas de universidades del Perú, período 2010-2021
         </h1>
@@ -784,11 +784,11 @@
         dark:bg-gray-800 dark:border-gray-700
       "
     >
-      <h1 class="pb-4 text-left text-xl text-gray-200 font-bold">
-        Metodología de Investigación por universidad
-      </h1>
       <div class="grid grid-cols-2 justify-items-center">
-        <MethodologyChart />
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
+        <div class="bg-white m-4 h-4 w-4"></div>
         <div class="bg-white col-span-2 m-4 h-4 w-4"></div>
       </div>
       <!-- <Chart
@@ -801,145 +801,163 @@
 </template>
 
 <script>
-import MethodologyChart from "./Charts/MethodologyChart.vue";
 export default {
-    name: "Form",
-    components: { MethodologyChart },
-    data() {
-        return {
-            theses: [],
-            form: {
-                id: 0,
-                universidad: "",
-                tesis: "",
-                año: 0,
-                diseño: "",
-                nivel: "",
-                enfoque: "",
-                instrumento: "",
-                numcitas: 0,
-                revistas: 0,
-                libros: 0,
-                numtesis: 0,
-                otros: 0,
-                no_obtenibles: 0,
-                referencias_recientes: 0,
-                indice_price: 0,
-            },
-        };
-    },
-    computed: {
-        calculatePriceIndex() {
-            const priceIndex = this.form.referencias_recientes / this.form.numcitas;
-            return priceIndex.toFixed(2);
-        },
-        citationSumIndicator() {
-            const sum = parseInt(this.form.revistas) +
-                parseInt(this.form.libros) +
-                parseInt(this.form.numtesis) +
-                parseInt(this.form.otros) +
-                parseInt(this.form.no_obtenibles);
-            return sum !== parseInt(this.form.numcitas);
-        },
-    },
-    mounted() {
-        this.getLocalStorage();
-    },
-    methods: {
-        createRandomId() {
-            let newId = Math.floor(Math.random() * 1000);
-            if (this.checkIdExists()) {
-                newId = Math.floor(Math.random() * 1000);
-            }
-            else {
-                return newId;
-            }
-        },
-        checkIdExists(checkId) {
-            this.theses.some((item) => {
-                return this.theses.id === checkId;
-            });
-        },
-        registerPriceIndex() {
-            const priceIndex = this.form.referencias_recientes / this.form.numcitas;
-            return priceIndex.toFixed(2);
-        },
-        addBibliometric() {
-            this.theses = this.theses || [];
-            this.theses.push({
-                ...this.form,
-                id: this.createRandomId(),
-                indice_price: this.registerPriceIndex(),
-            });
-            this.saveLocalStorage();
-        },
-        clearInputFields() {
-            this.form = {
-                id: 0,
-                universidad: "",
-                tesis: "",
-                año: 0,
-                diseño: "",
-                nivel: "",
-                enfoque: "",
-                instrumento: "",
-                numcitas: 0,
-                revistas: 0,
-                libros: 0,
-                numtesis: 0,
-                otros: 0,
-                no_obtenibles: 0,
-                referencias_recientes: 0,
-                indice_price: 0,
-            };
-        },
-        saveLocalStorage() {
-            if (process.client) {
-                localStorage.setItem("entrada", JSON.stringify(this.theses));
-            }
-        },
-        getLocalStorage() {
-            this.theses = JSON.parse(localStorage.getItem("entrada"));
-        },
-        removeBibliometric(item) {
-            this.theses = this.theses.filter((thesis) => thesis.id !== item);
-            this.saveLocalStorage();
-        },
-        convertToCsv(objectData) {
-            try {
-                const csvRows = [];
-                const headers = Object.keys(objectData[0]);
-                csvRows.push(headers.join(","));
-                for (const row of objectData) {
-                    const values = headers.map((header) => {
-                        const val = row[header];
-                        return `"${val}"`;
-                    });
-                    csvRows.push(values.join(","));
-                }
-                const csv = csvRows.join("\n");
-                return csv;
-            }
-            catch (err) {
-                console.log(err);
-            }
-        },
-        exportToCsvFile(csvData, filename) {
-            try {
-                let csvFile = "";
-                let downloadLink = "";
-                csvFile = new Blob([csvData], { type: "text/csv" });
-                downloadLink = document.createElement("a");
-                downloadLink.download = filename;
-                downloadLink.href = window.URL.createObjectURL(csvFile);
-                downloadLink.style.display = "none";
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-            }
-            catch (err) {
-                console.log(err);
-            }
-        },
+  name: 'Form',
+  data() {
+    return {
+      theses: [],
+      form: {
+        id: 0,
+        universidad: '',
+        tesis: '',
+        año: 0,
+        diseño: '',
+        nivel: '',
+        enfoque: '',
+        instrumento: '',
+        numcitas: 0,
+        revistas: 0,
+        libros: 0,
+        numtesis: 0,
+        otros: 0,
+        no_obtenibles: 0,
+        referencias_recientes: 0,
+        indice_price: 0,
+      },
     }
+  },
+  computed: {
+    calculatePriceIndex() {
+      const priceIndex = this.form.referencias_recientes / this.form.numcitas
+      return priceIndex.toFixed(2)
+    },
+
+    citationSumIndicator() {
+      const sum =
+        parseInt(this.form.revistas) +
+        parseInt(this.form.libros) +
+        parseInt(this.form.numtesis) +
+        parseInt(this.form.otros) +
+        parseInt(this.form.no_obtenibles)
+
+      return sum !== parseInt(this.form.numcitas)
+    },
+  },
+  mounted() {
+    this.getLocalStorage()
+  },
+  methods: {
+    createRandomId() {
+      let newId = Math.floor(Math.random() * 1000)
+      if (this.checkIdExists()) {
+        newId = Math.floor(Math.random() * 1000)
+      } else {
+        return newId
+      }
+    },
+
+    checkIdExists(checkId) {
+      this.theses.some((item) => {
+        return this.theses.id === checkId
+      })
+    },
+
+    registerPriceIndex() {
+      const priceIndex = this.form.referencias_recientes / this.form.numcitas
+      return priceIndex.toFixed(2)
+    },
+
+    addBibliometric() {
+      this.theses = this.theses || []
+      this.theses.push({
+        ...this.form,
+        id: this.createRandomId(),
+        indice_price: this.registerPriceIndex(),
+      })
+
+      this.saveLocalStorage()
+    },
+
+    clearInputFields() {
+      this.form = {
+        id: 0,
+        universidad: '',
+        tesis: '',
+        año: 0,
+        diseño: '',
+        nivel: '',
+        enfoque: '',
+        instrumento: '',
+        numcitas: 0,
+        revistas: 0,
+        libros: 0,
+        numtesis: 0,
+        otros: 0,
+        no_obtenibles: 0,
+        referencias_recientes: 0,
+        indice_price: 0,
+      }
+    },
+
+    saveLocalStorage() {
+      if (process.client) {
+        localStorage.setItem('entrada', JSON.stringify(this.theses))
+      }
+    },
+
+    getLocalStorage() {
+      this.theses = JSON.parse(localStorage.getItem('entrada'))
+    },
+
+    removeBibliometric(item) {
+      this.theses = this.theses.filter((thesis) => thesis.id !== item)
+
+      this.saveLocalStorage()
+    },
+
+    convertToCsv(objectData) {
+      try {
+        const csvRows = []
+        const headers = Object.keys(objectData[0])
+
+        csvRows.push(headers.join(','))
+
+        for (const row of objectData) {
+          const values = headers.map((header) => {
+            const val = row[header]
+            return `"${val}"`
+          })
+
+          csvRows.push(values.join(','))
+        }
+
+        const csv = csvRows.join('\n')
+
+        return csv
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    exportToCsvFile(csvData, filename) {
+      try {
+        let csvFile = ''
+        let downloadLink = ''
+
+        csvFile = new Blob([csvData], { type: 'text/csv' })
+
+        downloadLink = document.createElement('a')
+        downloadLink.download = filename
+        downloadLink.href = window.URL.createObjectURL(csvFile)
+        downloadLink.style.display = 'none'
+
+        document.body.appendChild(downloadLink)
+
+        downloadLink.click()
+      } catch (err) {
+        console.log(err)
+      }
+    },
+  },
 }
 </script>
