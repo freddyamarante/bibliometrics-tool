@@ -785,10 +785,7 @@
       "
     >
       <div class="grid grid-cols-2 justify-items-center">
-        <div class="bg-white m-4 h-4 w-4"></div>
-        <div class="bg-white m-4 h-4 w-4"></div>
-        <div class="bg-white m-4 h-4 w-4"></div>
-        <div class="bg-white m-4 h-4 w-4"></div>
+        <MethodologyChart :theses="theses" />
         <div class="bg-white col-span-2 m-4 h-4 w-4"></div>
       </div>
       <!-- <Chart
