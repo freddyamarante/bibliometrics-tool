@@ -785,24 +785,33 @@
       "
     >
       <div class="grid grid-cols-2 justify-items-center">
-        <MethodologyChart :theses="theses" />
+        <PriceChart :theses="theses" :price-chart-data="priceChartData" />
         <div class="bg-white col-span-2 m-4 h-4 w-4"></div>
       </div>
-      <!-- <Chart
-              :theses="theses"
-              class="max-h-[720px]"
-              @delete="removeBibliometric($event)"
-            /> -->
     </div>
   </div>
 </template>
 
 <script>
+import PriceChart from './Charts/PriceChart.vue'
 export default {
   name: 'Form',
+  components: { PriceChart },
   data() {
     return {
       theses: [],
+      priceChartData: {
+        labels: [
+          'Universidad Tecnológica del Perú (UTP)',
+          'Universidad César Vallejo (UCV)',
+          'Universidad Peruana Unión (UPeU)',
+          'Universidad Peruana de Ciencias Aplicadas (UPC)',
+          'Universidad Privada del Norte (UPN)',
+        ],
+        datasets: {
+          data: [],
+        },
+      },
       form: {
         id: 0,
         universidad: '',
@@ -828,7 +837,6 @@ export default {
       const priceIndex = this.form.referencias_recientes / this.form.numcitas
       return priceIndex.toFixed(2)
     },
-
     citationSumIndicator() {
       const sum =
         parseInt(this.form.revistas) +
@@ -836,14 +844,26 @@ export default {
         parseInt(this.form.numtesis) +
         parseInt(this.form.otros) +
         parseInt(this.form.no_obtenibles)
-
       return sum !== parseInt(this.form.numcitas)
     },
   },
   mounted() {
     this.getLocalStorage()
+    this.getPriceIndexPerUniversity()
   },
   methods: {
+    getPriceIndexPerUniversity() {
+      const priceIndexPerUniversity = this.theses
+        .filter((thesis) => {
+          return thesis.universidad
+        })
+        .map((thesis) => {
+          return Number(thesis.indice_price)
+        })
+
+      alert(priceIndexPerUniversity)
+      return priceIndexPerUniversity
+    },
     createRandomId() {
       let newId = Math.floor(Math.random() * 1000)
       if (this.checkIdExists()) {
@@ -852,18 +872,15 @@ export default {
         return newId
       }
     },
-
     checkIdExists(checkId) {
       this.theses.some((item) => {
         return this.theses.id === checkId
       })
     },
-
     registerPriceIndex() {
       const priceIndex = this.form.referencias_recientes / this.form.numcitas
       return priceIndex.toFixed(2)
     },
-
     addBibliometric() {
       this.theses = this.theses || []
       this.theses.push({
@@ -871,10 +888,8 @@ export default {
         id: this.createRandomId(),
         indice_price: this.registerPriceIndex(),
       })
-
       this.saveLocalStorage()
     },
-
     clearInputFields() {
       this.form = {
         id: 0,
@@ -895,61 +910,46 @@ export default {
         indice_price: 0,
       }
     },
-
     saveLocalStorage() {
       if (process.client) {
         localStorage.setItem('entrada', JSON.stringify(this.theses))
       }
     },
-
     getLocalStorage() {
       this.theses = JSON.parse(localStorage.getItem('entrada'))
     },
-
     removeBibliometric(item) {
       this.theses = this.theses.filter((thesis) => thesis.id !== item)
-
       this.saveLocalStorage()
     },
-
     convertToCsv(objectData) {
       try {
         const csvRows = []
         const headers = Object.keys(objectData[0])
-
         csvRows.push(headers.join(','))
-
         for (const row of objectData) {
           const values = headers.map((header) => {
             const val = row[header]
             return `"${val}"`
           })
-
           csvRows.push(values.join(','))
         }
-
         const csv = csvRows.join('\n')
-
         return csv
       } catch (err) {
         console.log(err)
       }
     },
-
     exportToCsvFile(csvData, filename) {
       try {
         let csvFile = ''
         let downloadLink = ''
-
         csvFile = new Blob([csvData], { type: 'text/csv' })
-
         downloadLink = document.createElement('a')
         downloadLink.download = filename
         downloadLink.href = window.URL.createObjectURL(csvFile)
         downloadLink.style.display = 'none'
-
         document.body.appendChild(downloadLink)
-
         downloadLink.click()
       } catch (err) {
         console.log(err)
