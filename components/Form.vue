@@ -853,6 +853,7 @@ export default {
   },
   methods: {
     getPriceIndexPerUniversity() {
+      this.theses = this.theses || []
       const priceIndexPerUniversity = this.theses
         .filter((thesis) => {
           return thesis.universidad
@@ -860,8 +861,6 @@ export default {
         .map((thesis) => {
           return Number(thesis.indice_price)
         })
-
-      alert(priceIndexPerUniversity)
       return priceIndexPerUniversity
     },
     createRandomId() {
