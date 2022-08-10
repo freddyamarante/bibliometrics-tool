@@ -41,9 +41,9 @@ export default {
   methods: {
     login() {
       this.$fire.auth.signInWithEmailAndPassword(this.auth.email, this.auth.password)
-        .then(function (error) {
-          this.snackbarText = error.message
+        .then((error) => {
           this.snackbar = true
+          this.snackbarText = error.message
         }).then((user) => {
           //  we are signed in
 
