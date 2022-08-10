@@ -55,7 +55,14 @@ export default {
           measurementId: 'G-PP0S44DHCW',
         },
         services: {
-          auth: true,
+          auth: {
+            persistence: 'local', // default
+            initialize: {
+              onAuthStateChangedAction: 'onAuthStateChangedAction',
+              subscribeManually: false,
+            },
+            ssr: false, // default
+          },
           database: true,
         },
       },
