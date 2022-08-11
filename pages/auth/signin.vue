@@ -1,6 +1,6 @@
 <template>
-  <div class="dark">
-    <div class=" block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md
+  <div class="dark grid h-screen place-items-center">
+    <div class=" block w-80 h-80 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md
     dark:bg-gray-800 dark:border-gray-700 ">
       <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Iniciar sesión</h1>
       <div class="mb-6">
@@ -49,7 +49,8 @@ export default {
 
           this.$nuxt.$router.push('/')
         })
-    }
+    },
+
   }
 }
 </script>
