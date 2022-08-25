@@ -729,24 +729,11 @@ export default {
         indice_price: 0,
       }
     },
-    saveLocalStorage() {
-      if (process.client) {
-        localStorage.setItem('entrada', JSON.stringify(this.theses))
-      }
-    },
     async getTheses() {
       const querySnapshot = await getDocs(collection(db, 'theses'))
       querySnapshot.forEach((doc) => {
         this.theses.push(doc.data())
       })
-    },
-    async getThesisByDocumentId(item) {
-      const q = await query(collection(db, 'theses'), where('id', '==', item))
-
-      const querySnapshot = await getDocs(q)
-      console.log(querySnapshot.forEach((doc) => {
-        return doc.id
-      }))
     },
     async removeBibliometric(thesisId) {
       const q = query(collection(db, 'theses'), where('id', '==', thesisId))
