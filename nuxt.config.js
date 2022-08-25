@@ -67,7 +67,12 @@ export default {
             },
             ssr: false, // default
           },
-          database: true,
+          firestore: {
+            memoryOnly: false,
+            chunkName:
+              process.env.NODE_ENV !== 'production' ? 'firebase-auth' : '[id]',
+            enablePersistence: true,
+          },
         },
       },
     ],

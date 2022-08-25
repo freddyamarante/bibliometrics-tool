@@ -24,7 +24,7 @@
           @click="forgotPassword">Olvidé mi contraseña</button>
       </div>
       <div v-if="snackbar"
-        class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
+        class="p-4 mt-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
         {{ snackbarText }}
       </div>
     </div>

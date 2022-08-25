@@ -1,7 +1,6 @@
 <template>
   <div class="grid grid-cols-2">
-    <div
-      class="
+    <div class="
         py-8
         px-4
         h-[100%]
@@ -11,14 +10,8 @@
         shadow-lg
         space-y-2
         bg-gray-800
-      "
-    >
-      <form
-        ref="form"
-        :model="form"
-        class="w-full max-w-sm text-center"
-        @submit.prevent
-      >
+      ">
+      <form ref="form" :model="form" class="w-full max-w-sm text-center" @submit.prevent>
         <h1 class="py-8 text-center text-gray-200 font-bold">
           Análisis bibliométrico de las tesis de pregrado en la carrera de
           Ingenieria de Sistemas de universidades del Perú, período 2010-2021
@@ -26,22 +19,15 @@
 
         <div class="grid grid-cols-4 gap-3 justify-items-center">
           <div class="col-span-4">
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="universidad"
-              >Universidad</label
-            >
-            <select
-              id="universidad"
-              v-model="form.universidad"
-              class="
+              " for="universidad">Universidad</label>
+            <select id="universidad" v-model="form.universidad" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -57,58 +43,35 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-            >
-              <option
-                :key="`universidad_select_1`"
-                :value="`Universidad Tecnológica del Perú`"
-              >
+              ">
+              <option :key="`universidad_select_1`" :value="`Universidad Tecnológica del Perú`">
                 Universidad Tecnológica del Perú (UTP)
               </option>
-              <option
-                :key="`universidad_select_2`"
-                :value="`Universidad César Vallejo`"
-              >
+              <option :key="`universidad_select_2`" :value="`Universidad César Vallejo`">
                 Universidad César Vallejo (UCV)
               </option>
-              <option
-                :key="`universidad_select_3`"
-                :value="`Universidad Peruana Unión`"
-              >
+              <option :key="`universidad_select_3`" :value="`Universidad Peruana Unión`">
                 Universidad Peruana Unión (UPeU)
               </option>
-              <option
-                :key="`universidad_select_4`"
-                :value="`Universidad Peruana de Ciencias Aplicadas`"
-              >
+              <option :key="`universidad_select_4`" :value="`Universidad Peruana de Ciencias Aplicadas`">
                 Universidad Peruana de Ciencias Aplicadas (UPC)
               </option>
-              <option
-                :key="`universidad_select_5`"
-                :value="`Universidad Privada del Norte`"
-              >
+              <option :key="`universidad_select_5`" :value="`Universidad Privada del Norte`">
                 Universidad Privada del Norte (UPN)
               </option>
             </select>
           </div>
 
           <div class="col-span-4">
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="tesis"
-              >Titulo de tesis</label
-            >
-            <input
-              id="tesis"
-              v-model="form.tesis"
-              class="
+              " for="tesis">Titulo de tesis</label>
+            <input id="tesis" v-model="form.tesis" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -124,29 +87,19 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="text"
-              name="tesis"
-            />
+              " type="text" name="tesis" />
           </div>
 
           <div class="col-span-4">
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="año"
-              >Año</label
-            >
-            <input
-              id="año"
-              v-model="form.año"
-              class="
+              " for="año">Año</label>
+            <input id="año" v-model="form.año" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -162,29 +115,19 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-              name="año"
-            />
+              " type="number" name="año" />
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="diseño"
-              >Diseño de Investigación</label
-            >
-            <select
-              id="diseño"
-              v-model="form.diseño"
-              class="
+              " for="diseño">Diseño de Investigación</label>
+            <select id="diseño" v-model="form.diseño" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -200,8 +143,7 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-            >
+              ">
               <option key="`diseño_select_1`" :value="`Experimental`">
                 Experimental
               </option>
@@ -216,22 +158,15 @@
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="nivel"
-              >Nivel de Investigación</label
-            >
-            <select
-              id="nivel"
-              v-model="form.nivel"
-              class="
+              " for="nivel">Nivel de Investigación</label>
+            <select id="nivel" v-model="form.nivel" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -247,8 +182,7 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-            >
+              ">
               <option key="`nivel_select_1`" :value="`Explicativo`">
                 Explicativo
               </option>
@@ -269,22 +203,15 @@
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="enfoque"
-              >Enfoque de Investigación</label
-            >
-            <select
-              id="enfoque"
-              v-model="form.enfoque"
-              class="
+              " for="enfoque">Enfoque de Investigación</label>
+            <select id="enfoque" v-model="form.enfoque" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -300,8 +227,7 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-            >
+              ">
               <option key="`enfoque_select_1`" :value="`Cualitativo`">
                 Cualitativo
               </option>
@@ -316,22 +242,15 @@
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="instrumento"
-              >Instrumento utilizado</label
-            >
-            <select
-              id="instrumento"
-              v-model="form.instrumento"
-              class="
+              " for="instrumento">Instrumento utilizado</label>
+            <select id="instrumento" v-model="form.instrumento" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -347,8 +266,7 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-            >
+              ">
               <option key="`instrumento_select_1`" :value="`Entrevista`">
                 Entrevista
               </option>
@@ -366,22 +284,15 @@
           </div>
 
           <div class="col-span-4">
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="numcitas"
-              >Número de citas</label
-            >
-            <input
-              id="numcitas"
-              v-model="form.numcitas"
-              class="
+              " for="numcitas">Número de citas</label>
+            <input id="numcitas" v-model="form.numcitas" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -397,37 +308,25 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-              name="numcitas"
-            />
+              " type="number" name="numcitas" />
           </div>
 
-          <div
-            v-if="citationSumIndicator"
-            class="my-5 text-sm text-red-600 col-span-4"
-          >
+          <div v-if="citationSumIndicator" class="my-5 text-sm text-red-600 col-span-4">
             Las fuentes registradas no suman el numero de citas totales
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="revistas"
-            >
+              " for="revistas">
               Revistas científicas
             </label>
-            <input
-              id="revistas"
-              v-model="form.revistas"
-              class="
+            <input id="revistas" v-model="form.revistas" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -443,14 +342,11 @@
                 dark:text-black
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-            />
+              " type="number" />
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
@@ -459,15 +355,10 @@
                 dark:text-gray-300
                 mb-5
                 mt-2
-              "
-              for="libros"
-            >
+              " for="libros">
               Libros
             </label>
-            <input
-              id="libros"
-              v-model="form.libros"
-              class="
+            <input id="libros" v-model="form.libros" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -483,14 +374,11 @@
                 dark:text-black
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-            />
+              " type="number" />
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
@@ -499,15 +387,10 @@
                 dark:text-gray-300
                 mb-5
                 mt-2
-              "
-              for="numtesis"
-            >
+              " for="numtesis">
               Tesis
             </label>
-            <input
-              id="numtesis"
-              v-model="form.numtesis"
-              class="
+            <input id="numtesis" v-model="form.numtesis" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -523,14 +406,11 @@
                 dark:text-black
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-            />
+              " type="number" />
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
@@ -539,15 +419,10 @@
                 dark:text-gray-300
                 mb-5
                 mt-2
-              "
-              for="otros"
-            >
+              " for="otros">
               Otros
             </label>
-            <input
-              id="otros"
-              v-model="form.otros"
-              class="
+            <input id="otros" v-model="form.otros" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -563,29 +438,21 @@
                 dark:text-black
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-            />
+              " type="number" />
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="no_obtenibles"
-            >
+              " for="no_obtenibles">
               No obtenibles
             </label>
-            <input
-              id="no_obtenibles"
-              v-model="form.no_obtenibles"
-              class="
+            <input id="no_obtenibles" v-model="form.no_obtenibles" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -601,14 +468,11 @@
                 dark:text-black
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-            />
+              " type="number" />
           </div>
 
           <div class="col-span-2">
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
@@ -617,15 +481,10 @@
                 dark:text-gray-300
                 mb-5
                 mt-2
-              "
-              for="referencias_recientes"
-            >
+              " for="referencias_recientes">
               Referencias &lt;5 años
             </label>
-            <input
-              id="referencias_recientes"
-              v-model="form.referencias_recientes"
-              class="
+            <input id="referencias_recientes" v-model="form.referencias_recientes" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -641,28 +500,21 @@
                 dark:text-black
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-              type="number"
-            />
+              " type="number" />
           </div>
 
           <div>
-            <label
-              class="
+            <label class="
                 block
                 mb-2
                 text-sm
                 font-medium
                 text-gray-900
                 dark:text-gray-300
-              "
-              for="indice_price"
-            >
+              " for="indice_price">
               Índice de Price
             </label>
-            <div
-              id="indice_price"
-              class="
+            <div id="indice_price" class="
                 sm:text-xs
                 bg-gray-50
                 border border-gray-300
@@ -678,8 +530,7 @@
                 dark:text-white
                 dark:focus:ring-blue-500
                 dark:focus:border-blue-500
-              "
-            >
+              ">
               {{ calculatePriceIndex }}
             </div>
           </div>
@@ -687,8 +538,7 @@
 
         <div class="grid grid-cols-2">
           <div>
-            <button
-              class="
+            <button class="
                 bg-blue-500
                 hover:bg-blue-700
                 text-white
@@ -698,15 +548,12 @@
                 border border-blue-700
                 rounded
                 mt-6
-              "
-              @click="addBibliometric()"
-            >
+              " @click="addBibliometric()">
               Ingresar
             </button>
           </div>
           <div>
-            <button
-              class="
+            <button class="
                 bg-gray-500
                 hover:bg-blue-700
                 text-white
@@ -716,9 +563,7 @@
                 border border-blue-700
                 rounded
                 mt-6
-              "
-              @click="clearInputFields()"
-            >
+              " @click="clearInputFields()">
               Nuevo
             </button>
           </div>
@@ -727,23 +572,16 @@
     </div>
 
     <div class="max-h-2/5 w-full w-[130%]">
-      <div
-        class="
+      <div class="
           p-6
           bg-white
           rounded-lg
           border border-gray-200
           shadow-md
           dark:bg-gray-800 dark:border-gray-700
-        "
-      >
-        <Table
-          :theses="theses"
-          class="max-h-[720px]"
-          @delete="removeBibliometric($event)"
-        />
-        <button
-          class="
+        ">
+        <Table :theses="theses" class="max-h-[720px]" @delete="removeBibliometric($event)" />
+        <button class="
             my-6
             bg-gray-300
             hover:bg-gray-400
@@ -754,16 +592,10 @@
             rounded
             inline-flex
             items-center
-          "
-          @click="
+          " @click="
             exportToCsvFile(convertToCsv(theses), 'analisis_bibliometrico.csv')
-          "
-        >
-          <svg
-            class="fill-current w-4 h-4 mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
+          ">
+          <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
           </svg>
           <span>Exportar a .csv</span>
@@ -771,8 +603,7 @@
       </div>
     </div>
 
-    <div
-      class="
+    <div class="
         my-6
         mx-16
         col-span-2
@@ -782,8 +613,7 @@
         border border-gray-200
         shadow-md
         dark:bg-gray-800 dark:border-gray-700
-      "
-    >
+      ">
       <div class="grid grid-cols-2 justify-items-center">
         <PriceChart :theses="theses" :price-chart-data="priceChartData" />
         <div class="bg-white col-span-2 m-4 h-4 w-4"></div>
@@ -793,7 +623,10 @@
 </template>
 
 <script>
+import { doc, collection, addDoc, getDocs, deleteDoc, query, where } from 'firebase/firestore'
+import { db } from '../server/lib/firebase.ts'
 import PriceChart from './Charts/PriceChart.vue'
+
 export default {
   name: 'Form',
   components: { PriceChart },
@@ -848,21 +681,9 @@ export default {
     },
   },
   mounted() {
-    this.getLocalStorage()
-    this.getPriceIndexPerUniversity()
+    this.getTheses()
   },
   methods: {
-    getPriceIndexPerUniversity() {
-      this.theses = this.theses || []
-      const priceIndexPerUniversity = this.theses
-        .filter((thesis) => {
-          return thesis.universidad
-        })
-        .map((thesis) => {
-          return Number(thesis.indice_price)
-        })
-      return priceIndexPerUniversity
-    },
     createRandomId() {
       let newId = Math.floor(Math.random() * 1000)
       if (this.checkIdExists()) {
@@ -880,18 +701,17 @@ export default {
       const priceIndex = this.form.referencias_recientes / this.form.numcitas
       return priceIndex.toFixed(2)
     },
-    addBibliometric() {
-      this.theses = this.theses || []
-      this.theses.push({
+
+    async addBibliometric() {
+      await addDoc(collection(db, "theses"), {
         ...this.form,
         id: this.createRandomId(),
         indice_price: this.registerPriceIndex(),
       })
-      this.saveLocalStorage()
     },
+
     clearInputFields() {
       this.form = {
-        id: 0,
         universidad: '',
         tesis: '',
         año: 0,
@@ -914,12 +734,30 @@ export default {
         localStorage.setItem('entrada', JSON.stringify(this.theses))
       }
     },
-    getLocalStorage() {
-      this.theses = JSON.parse(localStorage.getItem('entrada'))
+    async getTheses() {
+      const querySnapshot = await getDocs(collection(db, 'theses'))
+      querySnapshot.forEach((doc) => {
+        this.theses.push(doc.data())
+      })
     },
-    removeBibliometric(item) {
-      this.theses = this.theses.filter((thesis) => thesis.id !== item)
-      this.saveLocalStorage()
+    async getThesisByDocumentId(item) {
+      const q = await query(collection(db, 'theses'), where('id', '==', item))
+
+      const querySnapshot = await getDocs(q)
+      console.log(querySnapshot.forEach((doc) => {
+        return doc.id
+      }))
+    },
+    async removeBibliometric(thesisId) {
+      const q = query(collection(db, 'theses'), where('id', '==', thesisId))
+      const querySnapshot = await getDocs(q)
+      let docId = ''
+
+      querySnapshot.forEach((doc) => {
+        docId = doc.id
+      })
+
+      deleteDoc(doc(db, 'theses', docId))
     },
     convertToCsv(objectData) {
       try {

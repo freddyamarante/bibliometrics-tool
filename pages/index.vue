@@ -15,14 +15,12 @@
       </div>
     </nav>
     <div class="container py-4 px-4">
-      <Form />
+      <Form :theses="theses" />
     </div>
   </div>
 </template>
 
 <script>
-export default {
-}
 </script>
 
 <style>
