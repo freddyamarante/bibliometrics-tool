@@ -624,7 +624,10 @@
 
 <script>
 import { doc, collection, addDoc, getDocs, deleteDoc, query, where } from 'firebase/firestore'
+import { v4 as uuidv4 } from 'uuid'
 import { db } from '../server/lib/firebase.ts'
+
+
 import PriceChart from './Charts/PriceChart.vue'
 
 export default {
@@ -685,17 +688,7 @@ export default {
   },
   methods: {
     createRandomId() {
-      let newId = Math.floor(Math.random() * 1000)
-      if (this.checkIdExists()) {
-        newId = Math.floor(Math.random() * 1000)
-      } else {
-        return newId
-      }
-    },
-    checkIdExists(checkId) {
-      this.theses.some((item) => {
-        return this.theses.id === checkId
-      })
+      return uuidv4()
     },
     registerPriceIndex() {
       const priceIndex = this.form.referencias_recientes / this.form.numcitas
@@ -708,6 +701,8 @@ export default {
         id: this.createRandomId(),
         indice_price: this.registerPriceIndex(),
       })
+
+      this.getTheses()
     },
 
     clearInputFields() {
@@ -731,9 +726,13 @@ export default {
     },
     async getTheses() {
       const querySnapshot = await getDocs(collection(db, 'theses'))
+      const thesesArr = []
+
       querySnapshot.forEach((doc) => {
-        this.theses.push(doc.data())
+        thesesArr.push(doc.data())
       })
+
+      this.theses = thesesArr
     },
     async removeBibliometric(thesisId) {
       const q = query(collection(db, 'theses'), where('id', '==', thesisId))
@@ -745,6 +744,7 @@ export default {
       })
 
       deleteDoc(doc(db, 'theses', docId))
+      this.getTheses()
     },
     convertToCsv(objectData) {
       try {
