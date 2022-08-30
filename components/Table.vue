@@ -16,8 +16,8 @@
         ">
         <tr>
           <th scope="col" class="px-6 py-3">ID</th>
-          <th scope="col" class="px-6 py-3">Universidad</th>
           <th scope="col" class="px-6 py-3">Título de tesis</th>
+          <th scope="col" class="px-6 py-3">Universidad</th>
           <th scope="col" class="px-6 py-3">Año</th>
           <th scope="col" class="px-6 py-3">Diseño de Investigación</th>
           <th scope="col" class="px-6 py-3">Nivel de Investigación</th>
@@ -31,6 +31,7 @@
           <th scope="col" class="px-6 py-3">No obtenibles</th>
           <th scope="col" class="px-6 py-3">Referencias &lt;5 años</th>
           <th scope="col" class="px-6 py-3">Índice de Price</th>
+          <th scope="col" class="px-6 py-3">Fecha agregada</th>
           <th scope="col" class="px-6 py-3">Acción</th>
         </tr>
       </thead>
@@ -53,8 +54,8 @@
             ">
             {{ thesis.id }}
           </th>
-          <td class="px-6 py-4">{{ thesis.universidad }}</td>
           <td class="px-6 py-4">{{ thesis.tesis }}</td>
+          <td class="px-6 py-4">{{ thesis.universidad }}</td>
           <td class="px-6 py-4">{{ thesis.año }}</td>
           <td class="px-6 py-4">{{ thesis.diseño }}</td>
           <td class="px-6 py-4">{{ thesis.nivel }}</td>
@@ -68,6 +69,7 @@
           <td class="px-6 py-4">{{ thesis.no_obtenibles }}</td>
           <td class="px-6 py-4">{{ thesis.referencias_recientes }}</td>
           <td class="px-6 py-4">{{ thesis.indice_price }}</td>
+          <td class="px-6 py-4">{{ thesis.fecha_agregado }}</td>
           <td class="px-6 py-4">
             <button class="
                 bg-transparent

@@ -625,8 +625,8 @@
 <script>
 import { doc, collection, addDoc, getDocs, deleteDoc, query, where } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment'
 import { db } from '../server/lib/firebase.ts'
-
 
 import PriceChart from './Charts/PriceChart.vue'
 
@@ -650,6 +650,7 @@ export default {
       },
       form: {
         id: 0,
+        fecha_agregado: '',
         universidad: '',
         tesis: '',
         año: 0,
@@ -696,8 +697,9 @@ export default {
     },
 
     async addBibliometric() {
-      await addDoc(collection(db, "theses"), {
+      await addDoc(collection(db, 'theses'), {
         ...this.form,
+        fecha_agregado: moment().format('L'),
         id: this.createRandomId(),
         indice_price: this.registerPriceIndex(),
       })
